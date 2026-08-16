@@ -67,3 +67,8 @@ python3 web.py
 1. Open your browser and navigate to **[http://localhost:5000](http://localhost:5000)**.
 2. Fill in the source directories, select the action, and scan.
 3. Review files and click **Resolve Placeholders** to watch the real-time rsync transfer logs streamed to the web dashboard.
+
+---
+
+## Part of a Larger Collection
+This project is part of the **[Thunar-Action-Collection](https://github.com/Vikyek/Thunar-Action-Collection)**—a curated collection of custom Thunar action scripts and utilities designed to enhance the Thunar File Manager on Linux. Visit the collection repository for other useful actions and full setup guides.
