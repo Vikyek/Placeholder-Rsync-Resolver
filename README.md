@@ -1,8 +1,29 @@
 # Placeholder-Rsync-Resolver
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A premium Python file-synchronization tool designed to resolve local 0-byte placeholder files (e.g. dehydrated OneDrive files or unsynchronized remote clones) by copying/moving the actual full-size files from a source directory (local disk or remote server) using **rsync**.
 
-## How It Works Under the Hood
+---
+
+## 📋 Requirements & Dependencies
+
+- **Python:** Python 3.8+
+- **System Utilities:**
+  - `rsync`
+  - `libnotify` (for desktop notification alerts)
+- **Python Libraries:**
+  - `python-tkinter` (standard library for standalone desktop GUI)
+  - `Flask>=2.0.0` (for local Web Dashboard, see `requirements.txt`)
+
+On Arch Linux / Arch-based distributions:
+```bash
+sudo pacman -S rsync python python-flask libnotify tk
+```
+
+---
+
+## ⚙️ How It Works Under the Hood
 
 The tool processes file transfers in an optimized pipeline:
 1. **Scanning:** Traverses the placeholder directory recursively and partitions files into two groups:
@@ -17,19 +38,24 @@ The tool processes file transfers in an optimized pipeline:
 
 ## 🚀 Installation & Setup
 
-Ensure you have Python 3 and the `rsync` utility installed on your Linux system.
-
+### Automated Installation
+Run the provided `install.sh` script to install dependencies and link CLI, GUI, and Web launchers to `~/.local/bin`:
 ```bash
-# Move to the project directory
+git clone https://github.com/Vikyek/Placeholder-Rsync-Resolver.git
 cd Placeholder-Rsync-Resolver
+chmod +x install.sh
+./install.sh
+```
 
-# (Optional) Install Flask for the Web Dashboard
+### Manual Installation
+```bash
+cd Placeholder-Rsync-Resolver
 pip install -r requirements.txt
 ```
 
 ---
 
-## 💻 Running the Interfaces
+## 💻 Running the Interfaces & Usage Examples
 
 We provide three different ways to interact with the resolver:
 
@@ -55,6 +81,8 @@ Launch the native desktop window:
 
 ```bash
 python3 gui.py
+# Or via installed command:
+placeholder-rsync-resolver-gui
 ```
 *Configure directory paths, select your options, scan, and watch the rsync progress stream in the terminal log box.*
 
@@ -63,6 +91,8 @@ Launch the Flask server:
 
 ```bash
 python3 web.py
+# Or via installed command:
+placeholder-rsync-resolver-web
 ```
 1. Open your browser and navigate to **[http://localhost:5000](http://localhost:5000)**.
 2. Fill in the source directories, select the action, and scan.
@@ -70,5 +100,17 @@ python3 web.py
 
 ---
 
-## Part of a Larger Collection
+## 🗁 Thunar Integration
+This tool can be integrated into the Thunar File Manager as a custom action:
+- **Command:** `python3 /path/to/Placeholder-Rsync-Resolver/cli.py --src %f --notify`
+- **Pattern:** `*` (Directories)
+
+---
+
+## 🔗 Part of a Larger Collection
 This project is part of the **[Thunar-Action-Collection](https://github.com/Vikyek/Thunar-Action-Collection)**—a curated collection of custom Thunar action scripts and utilities designed to enhance the Thunar File Manager on Linux. Visit the collection repository for other useful actions and full setup guides.
+
+---
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
